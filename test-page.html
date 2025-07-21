@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>OpenList Extension Test Page</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            margin: 40px;
+            line-height: 1.6;
+        }
+        .demo-section {
+            margin: 30px 0;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background: #f9f9f9;
+        }
+        .url-list {
+            background: white;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-family: monospace;
+            white-space: pre-line;
+        }
+        h1 { color: #333; }
+        h2 { color: #666; }
+        .instructions {
+            background: #e3f2fd;
+            padding: 15px;
+            border-radius: 4px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>🚀 OpenList Chrome Extension Test Page</h1>
+    
+    <div class="instructions">
+        <h2>How to test the extension:</h2>
+        <ol>
+            <li>Load the extension from <code>/home/runner/work/TabList/TabList/extension</code> in Chrome</li>
+            <li>Click the OpenList icon in the browser toolbar to open the popup</li>
+            <li>Try selecting text below and using the right-click context menu</li>
+            <li>Access options via the "Options" link in the popup</li>
+        </ol>
+    </div>
+
+    <div class="demo-section">
+        <h2>📋 Sample URLs to test (select this text)</h2>
+        <div class="url-list">https://www.google.com
+https://github.com
+https://stackoverflow.com
+example.com
+[GitHub] https://github.com
+[Stack Overflow] https://stackoverflow.com</div>
+    </div>
+
+    <div class="demo-section">
+        <h2>🔍 Sample search terms (select this text)</h2>
+        <div class="url-list">javascript tutorials
+chrome extension development
+manifest v3 migration</div>
+    </div>
+
+    <div class="demo-section">
+        <h2>🔗 Mixed content with titles (select this text)</h2>
+        <div class="url-list">[News] https://news.ycombinator.com
+[Documentation] developer.chrome.com
+web development tips
+[MDN] https://developer.mozilla.org</div>
+    </div>
+
+    <div class="demo-section">
+        <h2>📝 Relative URLs (when current tab is example.com)</h2>
+        <div class="url-list">/about
+/contact
+../parent-page
+./current-dir/page</div>
+    </div>
+
+    <div class="demo-section">
+        <h2>🚫 Security test - unsafe schemas (should be blocked)</h2>
+        <div class="url-list">file:///etc/passwd
+javascript:alert('xss')
+data:text/html,<script>alert('xss')</script></div>
+    </div>
+
+    <script>
+        // Add some interactivity to test selection
+        document.addEventListener('DOMContentLoaded', function() {
+            const urlLists = document.querySelectorAll('.url-list');
+            urlLists.forEach(list => {
+                list.addEventListener('click', function() {
+                    // Select the text when clicked
+                    const range = document.createRange();
+                    range.selectNodeContents(this);
+                    const selection = window.getSelection();
+                    selection.removeAllRanges();
+                    selection.addRange(range);
+                });
+            });
+        });
+    </script>
+</body>
+</html>

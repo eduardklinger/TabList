@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>OpenList Options</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin: 20px;
+            max-width: 600px;
+        }
+        
+        .section {
+            margin-bottom: 30px;
+            padding: 20px;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            background: #fafafa;
+        }
+        
+        h1 {
+            color: #333;
+            border-bottom: 2px solid #4285f4;
+            padding-bottom: 10px;
+        }
+        
+        h2 {
+            color: #555;
+            margin-top: 0;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+        
+        input[type="text"], select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        
+        input[type="checkbox"] {
+            margin-right: 8px;
+        }
+        
+        .checkbox-label {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+        
+        button {
+            background-color: #4285f4;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            margin-right: 10px;
+        }
+        
+        button:hover {
+            background-color: #3367d6;
+        }
+        
+        .success-message {
+            color: green;
+            margin-left: 10px;
+            font-weight: 500;
+        }
+        
+        .description {
+            color: #666;
+            font-size: 13px;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>OpenList Options</h1>
+    
+    <div class="section">
+        <h2>Search Engine</h2>
+        <label for="searchEngine">Default search engine for non-URL text:</label>
+        <select id="searchEngine">
+            <option value="https://www.google.com/search?q=">Google</option>
+            <option value="https://www.bing.com/search?q=">Bing</option>
+            <option value="https://duckduckgo.com/?q=">DuckDuckGo</option>
+            <option value="https://search.yahoo.com/search?p=">Yahoo</option>
+        </select>
+        <div class="description">Choose which search engine to use when opening non-URL text</div>
+    </div>
+    
+    <div class="section">
+        <h2>URL Handling</h2>
+        <div class="checkbox-label">
+            <input type="checkbox" id="autoHttps">
+            <label for="autoHttps">Automatically use HTTPS for URLs without protocol</label>
+        </div>
+        <div class="description">When enabled, URLs like "example.com" will open as "https://example.com"</div>
+        
+        <div class="checkbox-label">
+            <input type="checkbox" id="handleRelativeUrls">
+            <label for="handleRelativeUrls">Handle relative URLs using current tab's domain</label>
+        </div>
+        <div class="description">When enabled, relative URLs like "/page" will be resolved using the current tab's domain</div>
+    </div>
+    
+    <div class="section">
+        <h2>Tab Behavior</h2>
+        <div class="checkbox-label">
+            <input type="checkbox" id="focusFirstTab">
+            <label for="focusFirstTab">Focus first opened tab</label>
+        </div>
+        <div class="description">When enabled, the first tab from the list will be focused after opening</div>
+        
+        <div class="checkbox-label">
+            <input type="checkbox" id="closePopupAfterOpen">
+            <label for="closePopupAfterOpen">Close popup after opening tabs</label>
+        </div>
+        <div class="description">When enabled, the popup will automatically close after opening tabs</div>
+    </div>
+    
+    <div class="section">
+        <h2>Security</h2>
+        <div class="checkbox-label">
+            <input type="checkbox" id="blockUnsafeSchemas">
+            <label for="blockUnsafeSchemas">Block unsafe URL schemas</label>
+        </div>
+        <div class="description">When enabled, prevents opening URLs with potentially unsafe schemas</div>
+    </div>
+    
+    <div>
+        <button id="save">Save Options</button>
+        <button id="reset">Reset to Defaults</button>
+        <span id="status" class="success-message"></span>
+    </div>
+    
+    <script src="options.js"></script>
+</body>
+</html>
