@@ -4,25 +4,68 @@
 	<script src="openlist-popup.js"></script>
 	<style type="text/css">
 		body {
-			font-family: sans-serif;
+			font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 			margin: 0;
 			padding: 10px;
+			min-width: 450px;
 		}
 		#list {
-			font-family: monospace;
-			width: 400px;
+			font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+			width: 100%;
 			height: 200px;
+			resize: vertical;
+			border: 1px solid #ccc;
+			border-radius: 4px;
+			padding: 8px;
+			box-sizing: border-box;
 		}
-		#openButton {
-			float: right;
+		#controls {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
 			margin-top: 8px;
 			margin-bottom: 8px;
-			padding: 5px 15px 7px 15px;
+		}
+		#openButton {
+			background-color: #4285f4;
+			color: white;
+			border: none;
+			padding: 8px 16px;
+			border-radius: 4px;
+			cursor: pointer;
+			font-size: 14px;
+		}
+		#openButton:hover {
+			background-color: #3367d6;
+		}
+		#optionsLink {
+			color: #666;
+			text-decoration: none;
+			font-size: 12px;
+		}
+		#optionsLink:hover {
+			text-decoration: underline;
+		}
+		.help-text {
+			font-size: 11px;
+			color: #666;
+			margin-top: 5px;
+			line-height: 1.3;
 		}
 	</style>
 </head>
 <body id="body">
-	<textarea id="list" autofocus="autofocus"></textarea>
-	<button id="openButton" title="Open this list of URLs in new tabs">Open</button>
+	<textarea id="list" autofocus="autofocus" placeholder="Enter URLs or search terms, one per line.
+Supports formats:
+• URL
+• [Custom Title] URL
+• Relative URLs (resolved from current tab)"></textarea>
+	<div id="controls">
+		<a href="#" id="optionsLink">Options</a>
+		<button id="openButton" title="Open this list of URLs in new tabs (Ctrl+Enter)">Open</button>
+	</div>
+	<div class="help-text">
+		Tip: Use Ctrl+Enter to open tabs quickly. Supports [title] URL format for custom tab titles.
+	</div>
 </body>
 </html>

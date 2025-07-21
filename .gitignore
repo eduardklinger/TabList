@@ -1,1 +1,19 @@
 extension.zip
+
+# macOS files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+
+# Windows files
+ehthumbs.db
+Thumbs.db
+
+# Development files
+test-page.html
+*.log
+node_modules/
+dist/
+.env
